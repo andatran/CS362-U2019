@@ -17,7 +17,10 @@ int main() {
     printf ("RANDOM TESTING Baron card:\n");
 
 	// clear game state
-	memset(&G, 23, sizeof(struct gameState));
+	// memset(&G, 23, sizeof(struct gameState));
+
+	SelectStream(2);
+  	PutSeed(3);
 
 	// randomize hands (references testDrawCard.c)
 	for (n = 2; n < 4; n++) {
