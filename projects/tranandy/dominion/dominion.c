@@ -1298,7 +1298,9 @@ int myTributeCard(int choice1, int choice2, struct gameState *state, int handPos
 
 int myBaronCard(int choice1, struct gameState *state, int handPos, int currentPlayer){
 	//immediately increase number of buy actions by 1
+	printf("Start of Baron card");
 	state->numBuys++;
+	printf("Increased buy actions by 1");
 
 	//choice is made to discard an estate
 	if (choice1 > 0){
