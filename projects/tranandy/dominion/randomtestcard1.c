@@ -20,7 +20,7 @@ int main() {
 	memset(&G, 23, sizeof(struct gameState));
 
 	// randomize hands (references testDrawCard.c)
-	for (n = 2; n < 2000; n++) {
+	for (n = 2; n < 4; n++) {
 		for (i = 0; i < sizeof(struct gameState); i++) {
 		((char*)&G)[i] = floor(Random() * 256);
 		}
@@ -40,7 +40,7 @@ int main() {
 
 					// save pre baron state
 					preBuy = G.numBuys;
-					preHand = len(G.hand[pIndex]);
+					preHand = sizeof(G.hand[pIndex]);
 
 					// choice made to discard estate
 					// check for discard

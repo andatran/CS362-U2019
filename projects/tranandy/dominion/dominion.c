@@ -818,7 +818,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case baron:
-		myBaronCard(choice1, choice2, state, handPos, currentPlayer);
+		myBaronCard(choice1, state, handPos, currentPlayer);
 		
     case great_hall:
       //+1 Card
@@ -1296,7 +1296,7 @@ int myTributeCard(int choice1, int choice2, struct gameState *state, int handPos
 	return 0;
 }
 
-int myBaronCard(int choice1, int choice2, struct gameState *state, int handPos, int currentPlayer){
+int myBaronCard(int choice1, struct gameState *state, int handPos, int currentPlayer){
 	//immediately increase number of buy actions by 1
 	state->numBuys++;
 
