@@ -767,7 +767,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return -1;
 			
     case mine:
-		myMineCard(choice1, choice2, state, handPosm currentPlayer);
+		myMineCard(choice1, choice2, state, handPos, currentPlayer);
 			
     case remodel:
       j = state->hand[currentPlayer][choice1];  //store card we will trash
@@ -818,7 +818,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return 0;
 		
     case baron:
-		myBaronCard(choice1, choice2, state, handpos, currentPlayer)
+		myBaronCard(choice1, choice2, state, handPos, currentPlayer);
 		
     case great_hall:
       //+1 Card
@@ -1130,7 +1130,7 @@ int myAmbassadorCard(int choice1, int choice2, struct gameState *state, int hand
 
 	//discard cards returned to supply
 	for (int j = 0; j < choice2; j++){
-		for (int i = 0; i < state-handCount[currentPlayer]; i++){
+		for (int i = 0; i < state->handCount[currentPlayer]; i++){
 			if (state->hand[currentPlayer][i] == state->hand[currentPlayer][choice1]){
 				discardCard(i, currentPlayer, state, 1);
 				break;
@@ -1246,7 +1246,7 @@ int myTributeCard(int choice1, int choice2, struct gameState *state, int handPos
 	else{
 		//if the deck has no cards, switch ot the discard and then reveal
 		if (state->deckCount[nextPlayer] == 0){
-			for (int i = 0; i < state-discardCount[nextPlayer]; i++){
+			for (int i = 0; i < state->discardCount[nextPlayer]; i++){
 				state->deck[nextPlayer][i] = state->discard[nextPlayer][i];
 				state->deckCount[nextPlayer]++;
 				state->discard[nextPlayer][i] = -1;
