@@ -16,13 +16,11 @@ int main() {
 
     printf ("RANDOM TESTING Baron card:\n");
 
-	// clear game state
-	// memset(&G, 23, sizeof(struct gameState));
-
+	// settings for rng
 	SelectStream(2);
   	PutSeed(3);
 
-	// randomize hands (references testDrawCard.c)
+	// randomize gamestate (references testDrawCard.c)
 	for (n = 2; n < 4; n++) {
 		for (i = 0; i < sizeof(struct gameState); i++) {
 		((char*)&G)[i] = floor(Random() * 256);
@@ -46,23 +44,25 @@ int main() {
 					preHand = sizeof(G.hand[pIndex]);
 
 					// choice made to discard estate
-					// check for discard
 					if (i == 1){
 						myBaronCard(i, G, handCount, pIndex);
 						postBuy = G.numBuys;
 						postHand = sizeof(G.hand[pIndex]);
 
+						//check buy action increased by 1
+						//check that card was discarded
 						assert(postBuy == preBuy + 1);
 						assert(postHand == preHand - 1);
 					}
 
 					// choice made to gain estate
-					// check for gain
 					else {
 						myBaronCard(i, G, handCount, pIndex);
 						postBuy = G.numBuys;
 						postHand = sizeof(G.hand[pIndex]);
 
+						//check buy action increased by 1
+						//check that card was gained
 						assert(postBuy == preBuy + 1);
 						assert(postHand == preHand + 1);
 					}
@@ -71,7 +71,7 @@ int main() {
 		}
 	}
 
-    printf("All tests passed!\n");
+	printf("RANDOM TESTING Baron card - ALL PASS")
 
     return 0;
 }
