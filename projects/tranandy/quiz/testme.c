@@ -3,16 +3,43 @@
 #include<stdlib.h>
 #include<time.h>
 
+// Printable ASCII characters begin at 32 and end at 126 inclusive
+// upper case alphabet begins at 65 and ends at 90
+// lower case alphabet begins at 97 and ends at 122
+
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+	int charCode;
+	char randChar;
+
+	// generate an integer between 32 and 126 inclusive
+	charCode = (rand() % (126 - 32 + 1)) + 32;
+
+	// cast to char
+	randChar = (char) charCode;
+
+	//return random char
+    return randChar;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+	int charCode;
+	char randChar;
+	char *myString = malloc((5+1)*sizeof(char));
+
+	// create strings of fixed length 5 composed of all lower case ascii alphabet characters
+	for (int i = 0; i < 5; i++){
+
+		// generate an integer between 97 and 122 inclusive
+		charCode = (rand() % (122 - 97 + 1)) + 97;
+		randChar = (char) charCode;
+
+		// build string
+		myString[i] = randChar;
+	}
+
+    return myString;
 }
 
 void testme()
@@ -45,6 +72,8 @@ void testme()
       printf("error ");
       exit(200);
     }
+	//free memory
+	free(s);
   }
 }
 
